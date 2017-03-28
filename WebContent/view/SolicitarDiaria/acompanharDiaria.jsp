@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/bootstrap.css">
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/estiloConsultar.css">
+	href="${pageContext.request.contextPath}/css/estiloCadastrar.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Listar Sugestão</title>
 </head>
@@ -20,26 +20,30 @@
 	<c:import url="../usuarioLogado.jsp" />
 	<c:choose>
 		<c:when test="${usuarioLogado.nivel=='GESTORUG'}">
-	<div id="formulario">
+	<div id="formularioHistorico">
 		<form action="acompanharSolicitacaoGestor" method="post"
 			class="form-inline">
-			<h3>Pesquisar Alterações</h3>
+			<h3>Pesquisar Alterações asdasd Diaria</h3>
 			<br>
 			<div class="form-group">
 				<label for="Nome">CPF</label><br> <input type="text"
 					class="form-control" name="cpfU" placeholder="cpf" maxlength="11">
 			</div>
-
-			<label for="Nome">Nome Usuario</label> <input type="text"
+		
+			<div class="form-group">
+			<label for="Nome">Nome Uasuario</label><br><input type="text"
 				class="form-control" name="nomeU" placeholder="Nome" maxlength="30"><br>
+			</div>
+				
 			<br> <label for="Nome">Periodo</label><br> <input
 				type="text" class="form-control" name="data1" placeholder="datagestor"
 				maxlength="10" > <label for="Nome"> a </label> <input
 				type="text" class="form-control" name="data2" placeholder="dataGestor"
 				maxlength="10" ><br> <br>
+			
 			<div class="form-group">
 
-				<label for="UG">Unidade Gestora</label><select name="uGestoraU"
+				<label for="UG">Unidade Gestora</label><br><select name="uGestoraU"
 					class="form-control">
 					<option value="">Selecione a UG</option>
 					<c:forEach items="${listarUGestora}" var="ug">
@@ -50,11 +54,12 @@
 				</select>
 			</div>
 
-
+<br><br>
 			<button type="submit" class="btn btn-primary">Consultar</button>
 		</form>
 		<br>
 	</div>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 			<table id="tabela" class="table table-striped">
 				<tr style='background-color: #E6E6E6; font-weight: bold;'>
 
@@ -90,13 +95,13 @@
 						<td>${sd.idGestor.nome}</td>
 						<c:choose>
 							<c:when test="${sd.def=='Aceitado'}">
-								<td bgcolor="green">${sd.def}</td>
+								<td bgcolor="3CB371">${sd.def}</td>
 							</c:when>
 							<c:when test="${sd.def=='Recusado'}">
-								<td bgcolor="red">${sd.def}</td>
+								<td bgcolor="FF7F50">${sd.def}</td>
 							</c:when>
 							<c:otherwise>
-								<td bgcolor="yellow">${sd.def}</td>
+								<td bgcolor="87CEFA">${sd.def}</td>
 							</c:otherwise>
 						</c:choose>
 						<td><a
@@ -105,6 +110,7 @@
 			</table>
 		</c:when>
 		<c:otherwise>
+		
 			<table id="tabela" class="table table-striped">
 				<tr style='background-color: #E6E6E6; font-weight: bold;'>
 
@@ -137,13 +143,13 @@
 						<td>${sd.idGestor.nome}</td>
 						<c:choose>
 							<c:when test="${sd.def=='Aceitado'}">
-								<td bgcolor="green">${sd.def}</td>
+								<td bgcolor="3CB371">${sd.def}</td>
 							</c:when>
 							<c:when test="${sd.def=='Recusado'}">
-								<td bgcolor="red">${sd.def}</td>
+								<td bgcolor="FF7F50">${sd.def}</td>
 							</c:when>
 							<c:otherwise>
-								<td bgcolor="yellow">${sd.def}</td>
+								<td bgcolor="87CEFA">${sd.def}</td>
 							</c:otherwise>
 						</c:choose>
 				</c:forEach>

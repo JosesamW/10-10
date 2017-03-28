@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/bootstrap.css">
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/estiloConsultar.css">
+	href="${pageContext.request.contextPath}/css/estiloCadastrar.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Listar Cargo</title>
 </head>
@@ -20,7 +20,7 @@
 			<br>
 			<c:import url="../usuarioLogado.jsp" />
 
-			<div id="formulario">
+			<div id="formularioHistorico">
 				<form action="listarHistorico" class="form-inline">
 					<h3>Pesquisar Alterações</h3>
 					<br>
@@ -30,13 +30,13 @@
 							placeholder="cpf" maxlength="11">
 					</div>
 					
-					
-						<label for="Nome">Nome Usuario</label> <input
+					<div class="form-group">
+						<label for="Nome">Nome Usuario</label><br><input
 							type="text" class="form-control" name="nomeU"
 							placeholder="Nome" maxlength="30"><br>
-					
+					</div>
 						<br>
-					
+						<div class="form-group">
 						<label for="Nome">Periodo</label><br> <input
 							type="text" class="form-control" name="datah"
 							placeholder="data1" maxlength="10">
@@ -44,11 +44,11 @@
 							<input
 							type="text" class="form-control" name="dataH"
 							placeholder="data2" maxlength="10" ><br>
-					
+					</div>
 					<br>
 						<div class="form-group">
 
-						<label for="UG">Unidade Gestora</label><select
+						<label for="UG">Unidade Gestora</label><br><select
 							name="uGestoraU" class="form-control">
 							<option value="">Selecione a UG</option>
 							<c:forEach items="${listarUGestora}" var="ug">
@@ -59,8 +59,8 @@
 						</select>
 						</div>
 						
-						
-						<label for="Objetos">Objeto Alterado</label>
+						<div class="form-group">
+						<label for="Objetos">Objeto Alterado</label><br>
 						<select name="objetoAlterado" class="form-control">
 						<option value="">Selecione</option>
 						<option value="Cargo">Cargo</option>
@@ -68,14 +68,16 @@
 						<option value="Usuario">Usuario</option>
 						<option value="Sugestao Diaria">Sugestão diaria</option>
 						</select>
-						
-					
+						</div>
+					<br><br>
 					<button type="submit" class="btn btn-primary">Consultar</button>
 				</form>
 				<br>
 			</div>
-
-			<table id="tabela" class="table table-striped">
+<br><br><br><br><br><br><br><br><br>
+<br><br><br>
+<br><br><br><br><br>
+			<table class="table table-striped">
 				<tr style='background-color: #E6E6E6; font-weight: bold;'>
 
 					

@@ -64,71 +64,90 @@
 	<c:import url="../topo.jsp" />
 	<br>
 	<c:import url="../usuarioLogado.jsp" />
-	<div id="formulario">
+	<div id="formSugestao">
 		<h3>Cadastrar Solicitação Diaria</h3>
 		<br>
-		<form action="cadastarSolicitacao" method="post" id="form">
+		<form action="cadastarSolicitacao" method="post" id="form" class="form-inline">
 			<%--Listar cidades --%>
 			<input type="hidden" name="usuarioId" value="${usuarioLogado.idUser}">
-			<input type="hidden" name="unidadeGestora"
-				value="${usuarioLogado.uGestora.codigo}">
+			<input type="hidden" name="unidadeGestora" value="${usuarioLogado.uGestora.codigo}">
+			
 			<div class="form-group">
 				<p id="msgIda"></p>
 				<p id="msgVolta"></p>
-				<label for="DataIda">Data Partida</label><br> <input
-					type="text" name="DataIda" id="DataIda" required="true"
-					maxlength="10" minlength="10">
-				<form:errors path="solicitarDiaria.DataIda" cssStyle="color:red" />
-				<br> <label for="DataVolta">Data Volta</label><br> <input
-					type="text" name="DataVolta" id="DataVolta" required="true"
-					maxlength="10" minlength="10">
-				<form:errors path="solicitarDiaria.DataVolta" cssStyle="color:red" />
-			</div>
 
-			<div class="form-group">
-				<input type="radio" name="tipoDiaria" value="P" required="true">
-				<label for="Nome">Parcial</label> <input type="radio"
-					name="tipoDiaria" required="true" value="I"> <label
-					for="Nome">Integral</label>
-			</div>
-			<div class="form-group">
-				<label for="Justificativa">Justificativa</label><br>
-				<textarea name="Justificativa" required="true" maxlength="50"
-					minlength="10"> </textarea>
+				<div class="form-group">
+					<label for="DataIda">Data Partida</label><br> <input
+						type="text" name="DataIda" id="DataIda" required="true"
+						maxlength="10" minlength="10" class="form-control">
+
+					<form:errors path="solicitarDiaria.DataIda" cssStyle="color:red" />
+				</div>
+
+				<div class="form-group">
+					<label for="DataVolta">Data Volta</label><br> <input
+						type="text" name="DataVolta" id="DataVolta" required="true"
+						maxlength="10" minlength="10" class="form-control">
+					<form:errors path="solicitarDiaria.DataVolta" cssStyle="color:red" />
+				</div>
+<br>
+				<div class="form-group">
+				<label>Tipos de Diarias</label><br>
+					<input type="radio" name="tipoDiaria" value="P" required="true">
+					<label for="Nome">Parcial</label> <input type="radio"
+						name="tipoDiaria" required="true" value="I"> <label
+						for="Nome">Integral</label>
+				</div>
+<br>
+				<div class="form-group">
+					<label for="Justificativa">Justificativa</label><br>
+					<textarea name="Justificativa" required="true" maxlength="50"
+						minlength="10" class="form-control"> </textarea>
+					<br>
+					<form:errors path="solicitarDiaria.Justificativa"
+						cssStyle="color:red" />
+
+				</div>
+<br>
+				<div class="form-group">
+					<label>Origem</label> <br> <select id="estado" required="true">
+						<%--Lista os estados --%>
+						<option value="">Selecione a UF</option>
+						<c:forEach var="uf" items="${ListarEstados}">
+
+							<option value="${uf.cod_cidade}">${uf.UF}</option>
+
+						</c:forEach>
+					</select>
+
+				</div>
+				<div class="form-group" id="cidade"></div>
+
 				<br>
-				<form:errors path="solicitarDiaria.Justificativa"
-					cssStyle="color:red" />
-
-			</div>
-			<div class="form-group">
-				<label>Origem</label> <br> <select id="estado" required="true">
+				<div class="form-group">
 					<%--Lista os estados --%>
-					<option value="">Selecione a UF</option>
-					<c:forEach var="uf" items="${ListarEstados}">
+					 <label>Destino</label> <br> <select id="estado2"
+						required="true">
+						<option value="">Selecione a UF</option>
+						<c:forEach var="uf" items="${ListarEstados}">
 
-						<option value="${uf.cod_cidade}">${uf.UF}</option>
+							<option value="${uf.cod_cidade}">${uf.UF}</option>
 
-					</c:forEach>
-				</select>
-			</div>
-			<div class="form-group" id="cidade"></div>
-			<div class="form-group">
-				<%--Lista os estados --%>
-				<label>Destino</label> <br> <select id="estado2"
-					required="true">
-					<option value="">Selecione a UF</option>
-					<c:forEach var="uf" items="${ListarEstados}">
+						</c:forEach>
+					</select>
 
-						<option value="${uf.cod_cidade}">${uf.UF}</option>
-
-					</c:forEach>
-				</select>
+				</div>
 				<div class="form-group" id="cidade2"></div>
 
-				<button type="button" id="gerarValor">Consultar Diaria</button>
+				<br>
+			<br>
+			<div class="form-group">
+			
+			<button type="button" id="gerarValor" >Consultar Diaria</button><br><div class="form-group" id="valor"></div>
 			</div>
-			<div class="form-group" id="valor"></div>
+			<br><br>
 			<button type="submit" class="btn btn-primary">Solicitar</button>
+			
 		</form>
 
 	</div>

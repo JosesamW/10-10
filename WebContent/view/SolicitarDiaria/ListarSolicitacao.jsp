@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/bootstrap.css">
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/estiloConsultar.css">
+	href="${pageContext.request.contextPath}/css/estiloCadastrar.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Listar Sugestão</title>
 </head>
@@ -21,25 +21,34 @@
 			<c:import url="../usuarioLogado.jsp" />
 			<%-- form filtro --%>
 
-			<div id="formulario">
+			<div id="formularioHistorico">
 				<form action="listarSolicitacao" method="post" class="form-inline">
-					<h3>Pesquisar Alterações</h3>
+					<h3>Pesquisar Alterações de Diarias</h3>
 					<br>
+
 					<div class="form-group">
 						<label for="Nome">CPF</label><br> <input type="text"
 							class="form-control" name="cpfU" placeholder="cpf" maxlength="11">
 					</div>
 
-					<label for="Nome">Nome Usuario</label> <input type="text"
-						class="form-control" name="nomeU" placeholder="Nome"
-						maxlength="30"><br> <br> <label for="Nome">Periodo</label><br>
+					<div class="form-group">
+						<label for="Nome">Nome Usuario</label><br>
+						<input type="text" class="form-control" name="nomeU"
+							placeholder="Nome" maxlength="30">
+					</div>
+					<br>
+					<div class="form-group">
+					<label for="Nome">Periodo</label><br>
 					<input type="text" class="form-control" name="dataadm"
 						placeholder="data1" maxlength="10"> <label for="Nome">
 						a </label> <input type="text" class="form-control" name="dataAdm"
 						placeholder="data2" maxlength="10"><br> <br>
+						</div>
 					<div class="form-group">
-
-						<label for="UG">Unidade Gestora</label><select name="uGestoraU"
+</div>
+<br>
+<div class="form-group">
+						<label for="UG">Unidade Gestora</label><br><select name="uGestoraU"
 							class="form-control">
 							<option value="">Selecione a UG</option>
 							<c:forEach items="${listarUGestora}" var="ug">
@@ -49,15 +58,16 @@
 							</c:forEach>
 						</select>
 					</div>
-
-
-					<button type="submit" class="btn btn-primary">Consultar</button>
+					<br><br>
+<button type="submit" class="btn btn-primary">Consultar</button>
+</div>
+					
 				</form>
 				<br>
 			</div>
 
 
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 			<table id="tabela" class="table table-striped">
 				<tr style='background-color: #E6E6E6; font-weight: bold;'>
 

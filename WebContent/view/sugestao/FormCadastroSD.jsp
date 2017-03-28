@@ -46,7 +46,7 @@
 			<c:import url="../topo.jsp" />
 						<br>
 			<c:import url="../usuarioLogado.jsp" />
-			<div id="formulario">
+			<div id="formSugestao">
 				<h3>Cadastrar Sugestão de Diaria</h3><br>
 				<form action="cadastrarSugestao" method="post" class="form-inline">
 

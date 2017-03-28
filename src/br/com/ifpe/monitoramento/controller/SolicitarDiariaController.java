@@ -93,14 +93,10 @@ public class SolicitarDiariaController {
 
 		for (SugestaoDiaria valor : listarValor) {
 
-			if (valor != null) {
-				st.append(
-						"<input type='text' name='ValorDiaria' id='ValorDiaria' required='true' maxlength='8' minlength='2' value="
-								+ valor.getValores() + ">");
-			} else {
-				st.append(
-						"<input type='text' name='ValorDiaria' id='ValorDiaria' required='true' maxlength='8' minlength='2 value='0' >");
-			}
+			st.append(
+					"<input type='text' name='ValorDiaria' id='ValorDiaria' required='true' maxlength='8' minlength='2' value="
+							+ valor.getValores() + ">");
+
 		}
 
 		response.setStatus(200);
@@ -119,8 +115,8 @@ public class SolicitarDiariaController {
 	}
 
 	@RequestMapping("/listarSolicitacao") // listar Solicitacao p/ ADM
-	public String listarSolicitacao(Model model, String cpfU, String dataadm, String dataAdm, String nomeU, Integer uGestoraU,
-			String codigo, String nome) {
+	public String listarSolicitacao(Model model, String cpfU, String dataadm, String dataAdm, String nomeU,
+			Integer uGestoraU, String codigo, String nome) {
 		SolicitarDiariaDao dao = new SolicitarDiariaDao();
 		model.addAttribute("listarSolicitacao", dao.listarSolicitacaoADM(cpfU, nomeU, dataadm, dataAdm, uGestoraU));
 		UnidadeGestoraDao dao2 = new UnidadeGestoraDao();
@@ -140,12 +136,12 @@ public class SolicitarDiariaController {
 	@RequestMapping("/acompanharSolicitacaoGestor") // listar Solicitacao p/
 													// Gestor UG
 	public String acompanharSolicitacaoGestor(Model model, HttpServletRequest request, String cpfU, String datagestor,
-			String dataGestor, String nomeU, Integer uGestoraU,String nome , String codigo) {
+			String dataGestor, String nomeU, Integer uGestoraU, String nome, String codigo) {
 		Usuario us = (Usuario) request.getSession().getAttribute("usuarioLogado");
 		int UnidadeGestora = us.getuGestora().getCodigo();
 		SolicitarDiariaDao dao = new SolicitarDiariaDao();
 		model.addAttribute("ListarSolicitacaoGestor",
-		dao.listarSolicitacaoUsuarioUG(UnidadeGestora, cpfU, nomeU, datagestor, dataGestor, uGestoraU));
+				dao.listarSolicitacaoUsuarioUG(UnidadeGestora, cpfU, nomeU, datagestor, dataGestor, uGestoraU));
 		UnidadeGestoraDao dao2 = new UnidadeGestoraDao();
 		model.addAttribute("listarUGestora", dao2.listarUG(nome, codigo));
 		return "SolicitarDiaria/acompanharDiaria";

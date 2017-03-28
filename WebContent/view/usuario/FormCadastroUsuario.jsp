@@ -43,10 +43,10 @@
 			<c:import url="../usuarioLogado.jsp" />
 
 			<div id="formUsuario">
-				<h3>Cadastro de Usuário</h3>
+				
 				<form action="cadastrarUsuario" method="post" id="formulario"
 					class="form-inline">
-
+<h3>Cadastro de Usuário</h3>
 					<div class="form-group">
 
 
@@ -137,7 +137,7 @@
 						</select>
 						<form:errors path="usuario.cargo" cssStyle="color:red" />
 					</div>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;
 					<div class="form-group">
 
 						<br /> <label for="UG">Unidade Gestora*</label><br> <select
