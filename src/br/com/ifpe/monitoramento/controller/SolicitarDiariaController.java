@@ -79,11 +79,13 @@ public class SolicitarDiariaController {
 	}
 
 	@RequestMapping("/exibirValor") // Valor ajax
-	public @ResponseBody String exibirValor(@RequestParam Integer origem, Integer destino,
-			HttpServletResponse response) {
-
+	public @ResponseBody String exibirValor(@RequestParam Integer origem, Integer destino, HttpServletResponse response,
+			HttpServletRequest request) {
+		Usuario us = (Usuario) request.getSession().getAttribute("usuarioLogado");
+		int idUg = us.getuGestora().getCodigo();
+		int idCargo = us.getCargo().getId();
 		SugestaoDiariaDao dao = new SugestaoDiariaDao();
-		List<SugestaoDiaria> listarValor = dao.listarValor(origem, destino);
+		List<SugestaoDiaria> listarValor = dao.listarValor(origem, destino, idUg, idCargo);
 
 		StringBuilder st = new StringBuilder();
 		st.append("<label>");
@@ -93,9 +95,18 @@ public class SolicitarDiariaController {
 
 		for (SugestaoDiaria valor : listarValor) {
 
-			st.append(
-					"<input type='text' name='ValorDiaria' id='ValorDiaria' required='true' maxlength='8' minlength='2' value="
-							+ valor.getValores() + ">");
+			if (listarValor == null || listarValor.equals("") && valor.getValores() == null
+					&& valor.getValores().equals("")) {
+
+				st.append(
+						"<input type='text' name='ValorDiaria' id='ValorDiaria' required='true' maxlength='8' minlength='2' value='0' >");
+
+			} else {
+				st.append(
+						"<input type='text' name='ValorDiaria' id='ValorDiaria' required='true' maxlength='8' minlength='2' value="
+								+ valor.getValores() + ">");
+			}
+			break;
 
 		}
 

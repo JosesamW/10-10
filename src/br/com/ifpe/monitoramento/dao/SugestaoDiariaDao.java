@@ -93,18 +93,20 @@ public class SugestaoDiariaDao {
 		}
 	}
 
-	public List<SugestaoDiaria> listarValor(int origem, int destino) { // Listar
-																		// valor
-																		// sugestao
-																		// em
-																		// Solicitar
-																		// diaria
+	public List<SugestaoDiaria> listarValor(int origem, int destino, int idUg, int idCargo) { // Listar
+		// valor
+		// sugestao
+		// em
+		// Solicitar
+		// diaria
 		try {
 			List<SugestaoDiaria> listarValor = new ArrayList<SugestaoDiaria>();
-			String sql = "SELECT Valor FROM sugestaovalordiaria WHERE IdCidadeOrigem = ? AND IdCidadeDestino = ? ";
+			String sql = "SELECT Valor FROM sugestaovalordiaria WHERE IdCidadeOrigem = ? AND IdCidadeDestino = ? AND IdUg = ? AND IdCargo = ? ";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setInt(1, origem);
 			stmt.setInt(2, destino);
+			stmt.setInt(3, idUg);
+			stmt.setInt(4, idCargo);
 			SugestaoDiaria SugestaoDiaria;
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
