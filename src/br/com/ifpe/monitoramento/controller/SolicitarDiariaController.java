@@ -95,19 +95,16 @@ public class SolicitarDiariaController {
 
 		for (SugestaoDiaria valor : listarValor) {
 
-			if (listarValor == null || listarValor.equals("") && valor.getValores() == null
-					&& valor.getValores().equals("")) {
+			st.append(
+					"<input type='text' name='ValorDiaria' id='ValorDiaria' required='true' maxlength='8' minlength='2' value="
+							+ valor.getValores() + ">");
 
-				st.append(
-						"<input type='text' name='ValorDiaria' id='ValorDiaria' required='true' maxlength='8' minlength='2' value='0' >");
-
-			} else {
-				st.append(
-						"<input type='text' name='ValorDiaria' id='ValorDiaria' required='true' maxlength='8' minlength='2' value="
-								+ valor.getValores() + ">");
-			}
 			break;
 
+		}
+		if (listarValor.size() == 0) {
+			st.append(
+					"<input type='text' name='ValorDiaria' id='ValorDiaria' required='true' maxlength='8' minlength='2' value='0' >");
 		}
 
 		response.setStatus(200);
